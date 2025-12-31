@@ -86,10 +86,8 @@
         tg.expand();
 
         join.addEventListener('click', () => {
-            let data = {
-                raffle: 'raf'
-            }
-            tg.sendData(JSON.stringify(data));
+            let data = 'raf'
+            tg.sendData(data);
 
             tg.close();
         });
