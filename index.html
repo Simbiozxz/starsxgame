@@ -79,7 +79,6 @@
         <p>Используйте кнопку снизу для участия в конкурсе или поднятия шанса!🍀</p>
         <button id="join">🎟️🍀🎁</button>
     </div>
-    <script src="https://static.sonartech.io/lib/1.0.0/sonar.js?appId=app_ab7e3692"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
@@ -87,25 +86,10 @@
         tg.expand();
 
         join.addEventListener('click', () => {
-            window.Sonar.show({
-                adUnit: 'adforjoin', // Replace with your actual rewarded ad unit name
+            let data = 'raf'
+            tg.sendData(data);
 
-                loader: true, // optional, switch on / off loader showing before ad. Default: true
-
-                onReward: () => {
-                    let data = 'raf'
-                    tg.sendData(data);
-
-                    tg.close();
-                },
-            }).then((result: { status: SonarReturnStatus, message?: string }) => {
-                // You still can handle the result of the ad display attempt by awaiting Promise
-                if (result.status === 'error') {
-                    console.error('Ad failed to show:', result.message); // Log the error if something went wrong
-                } else {
-                    console.log('Ad status:', result.status); // Log that the ad is successfully showing
-                }
-            });
+            tg.close();
         });
     </script>
 </body>
