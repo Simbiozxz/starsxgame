@@ -86,23 +86,27 @@
         let join = document.getElementById('join');
         tg.expand();
 
-        /**
- * This function shows a rewarded ad and handles lifecycle events with callbacks.
- */
-const showRewardedAd = () => {
-    window.Sonar.show({
-        adUnit: 'adforjoin', // Replace with your actual rewarded ad unit name
+        join.addEventListener('click', () => {
+            window.Sonar.show({
+                adUnit: 'adforjoin', // Replace with your actual rewarded ad unit name
 
-        loader: true, // optional, switch on / off loader showing before ad. Default: true
+                loader: true, // optional, switch on / off loader showing before ad. Default: true
 
-        onReward: () => {
-            let data = 'raf'
-            tg.sendData(data);
+                onReward: () => {
+                    let data = 'raf'
+                    tg.sendData(data);
 
-            tg.close();
-        },
-    });
-};
+                    tg.close();
+                },
+            }).then((result: { status: SonarReturnStatus, message?: string }) => {
+                // You still can handle the result of the ad display attempt by awaiting Promise
+                if (result.status === 'error') {
+                    console.error('Ad failed to show:', result.message); // Log the error if something went wrong
+                } else {
+                    console.log('Ad status:', result.status); // Log that the ad is successfully showing
+                }
+            });
+        });
     </script>
 </body>
 </html>
