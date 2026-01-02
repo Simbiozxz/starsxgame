@@ -86,9 +86,23 @@
         let join = document.getElementById('join');
         tg.expand();
 
-        join.addEventListener('click', () => {
-            window.Sonar.show({ adUnit: 'adforjoin' });
-        });
+        /**
+ * This function shows a rewarded ad and handles lifecycle events with callbacks.
+ */
+const showRewardedAd = () => {
+    window.Sonar.show({
+        adUnit: 'adforjoin', // Replace with your actual rewarded ad unit name
+
+        loader: true, // optional, switch on / off loader showing before ad. Default: true
+
+        onReward: () => {
+            let data = 'raf'
+            tg.sendData(data);
+
+            tg.close();
+        },
+    });
+};
     </script>
 </body>
 </html>
