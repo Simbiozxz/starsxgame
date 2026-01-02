@@ -80,14 +80,14 @@
         <button id="join">🎟️🍀🎁</button>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="https://static.sonartech.io/lib/1.0.0/sonar.js?appId={app_ab7e3692}"></script>
+    <script src="https://static.sonartech.io/lib/1.0.0/sonar.js?appId=app_ab7e3692"></script>
     <script>
         let tg = window.Telegram.WebApp;
         let join = document.getElementById('join');
         tg.expand();
 
         join.addEventListener('click', () => {
-            window.Sonar.show({ adUnit: '{adforjoin}' });
+            window.Sonar.show({ adUnit: 'adforjoin' });
         });
     </script>
 </body>
